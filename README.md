@@ -46,6 +46,7 @@ To get started with the Wi-Fi Password Change and QR Code Generator Tool, follow
    ```
 6. Use the UI to configure your preferences and start password management and QR code generation.
 7. Obtain Meraki API key [here](https://developer.cisco.com/meraki/api/#!authorization/obtaining-your-meraki-api-key).
+
    **Note**: Ensure that the API key used for Meraki access has write permissions in the Meraki dashboard.
 
 ## Use
