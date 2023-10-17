@@ -51,3 +51,8 @@ To get started with the Wi-Fi Password Change and QR Code Generator Tool, follow
 
 From any browser enter http://<ip_address>:5000 or http://localhost:5000
 
+# License
+
+This project is licensed under the [NETDecorators] - see the [LICENSE.md](LICENSE.md) file for details.
+
+
