@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Networks and SSIDs</title>
+    <link rel="icon" href="/static/images/favicon.svg" type="image/png" sizes="16x16">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/format.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='style/nicepage.css') }}" media="screen">
+    <link rel="stylesheet" href="{{ url_for('static',filename='style/Admin-logged.css') }}" media="screen">
+
+    <script>
+    function toggleSelectAll(listNumber) {
+            var checkboxes = document.querySelectorAll(`input[name="choice${listNumber}"]`);
+            var allSelected = Array.from(checkboxes).every(checkbox => checkbox.checked);
+            var actionLink = document.querySelector(`#selectall${listNumber}`);
+            
+            for (var checkbox of checkboxes) {
+                checkbox.checked = !allSelected;
+            }
+
+            actionLink.textContent = allSelected ? 'Select All' : 'Deselect All';
+        }
+    </script>
+
+</head>
+<body>
+    <div id ="content" style="text-align:center;" class="container2">
+        <form method="post" id="loginForm" style="font-size:13pt">
+            <div id ="content" class="container" style="text-align:left;">
+                <h3 for="preshared" style="font-size:25pt;text-align:center;">Auto Password Change</h3>
+                <!-- <input type="password" id="preshared" name="preshared" style="text-align:center;" required> -->
+                <div  style="display: flex; align-items: center; text-align:left;">
+                <label for="change_frequency" style="margin-right: 10px;">Change password every:</label>
+                <input type="number" name="change_frequency" min="1" required style="width: 80px; margin-right: 10px; text-align:center;">
+                <select name="change_unit">
+                    <option value="minutes">Minutes</option>
+                    <option value="hours">Hours</option>
+                    <option value="days">Days</option>
+                    <option value="weeks">Weeks</option>
+                </select>
+                </div>
+
+                <h3 style="font-size:25pt;text-align:center;">Select Networks</h3>
+                <a href="#" style="text-align:centre;" id="selectall1" onclick="toggleSelectAll(1); return false;">Select All</a><br><br>
+                {% for org, items in networkSSID.items() %}
+                <h3 style="font-size:17pt;text-align:left;">Org: {{ org }}</h3>
+                {% for networkName in items|map(attribute='networkName')|unique %}
+                <input type="checkbox" name="choice1" value="{{ networkName }}" style="text-align:left;">  {{ networkName }}<br>
+                {% endfor %}
+
+                {% endfor %}
+            </div>
+            <div id ="content" style="text-align:left;" class="container">
+                <h3 style="font-size:25pt;text-align:center;">Select SSID(s)</h3>
+                <a href="#" style="text-align:centre;" id="selectall2" onclick="toggleSelectAll(2); return false;">Select All</a><br><br>
+                {% for item in list2 %}
+                <input type="checkbox" name="choice2" value="{{ item }}" style="text-align:left;">  {{ item }}<br>
+                {% endfor %}
+                <br>
+            </div>
+
+            <input type="submit" value="Submit" class="u-btn u-btn-submit u-button-style u-custom-color-1 u-btn-1"> 
+        </form>
+    </div>
+
+</body>
+</html>

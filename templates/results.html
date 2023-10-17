@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Results</title>
+    <link rel="icon" href="/static/images/favicon.svg" type="image/png" sizes="16x16">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/format.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='style/nicepage.css') }}" media="screen">
+    <link rel="stylesheet" href="{{ url_for('static',filename='style/Admin-logged.css') }}" media="screen">
+
+</head>
+<body>
+    <div id ="content" style="text-align:center;" class="container">
+    <form id ="loginForm" style="text-align:center;" class="container">
+        <h2 style="font-size:20pt;text-align:center;"><b>Data has been saved</b></h2>
+        <h3 style="font-size:15pt;text-align:left;">Selected Networks:</h3>
+        <ul>
+            {% for item in selected_items_list1 %}
+            <li style="font-size:10pt;text-align:left;">{{ item }}</li>
+            {% endfor %}
+        </ul>
+        <h3 style="font-size:15pt;text-align:left;">Selected SSIDs:</h3>
+        <ul>
+            {% for item in selected_items_list2 %}
+            <li style="font-size:10pt;text-align:left;">{{ item }}</li>
+            {% endfor %}
+        </ul>
+
+    <a href="{{ url_for('index') }}" class="u-btn u-btn-submit u-button-style u-custom-color-1 u-btn-1">Back to Home</a>
+    </form>
+    </div>
+
+</body>
+</html>

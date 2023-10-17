@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Auto Password Changer</title>
+    <link rel="icon" href="/static/images/favicon.svg" type="image/png" sizes="16x16">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/format.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='style/nicepage.css') }}" media="screen">
+    <link rel="stylesheet" href="{{ url_for('static',filename='style/Admin.css') }}" media="screen">
+    <style type="text/css">
+    #loading {
+      /* width: 32px;
+      height: 32px; */
+      display: none;
+      /* background-image:url("/static/ajax-loader.gif"); */
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 200px;
+      cursor: wait;
+      }
+      </style>
+      <script type='text/javascript'>
+          function loading(){
+            document.getElementById("loading").style.display = "block";
+            document.getElementById("Fady").style.display = "block";
+            document.getElementById("content").style.display = "none";
+          }
+          function setActionAndSubmit(actionURL,method) {
+            var form = document.getElementById('loginForm');
+            form.action = actionURL;
+            form.method = method;
+            form.submit();
+        }
+
+      </script>
+
+</head>
+<body>
+
+      <div id ="content" style="text-align:center;" class="container">
+        <form onsubmit="loading();" method="POST" enctype="multipart/form-data" id="loginForm" style="font-size:13pt" >
+          <a href="https://blog.netdecorators.com/" target="_blank">
+            <img src="/static/images/f.png" style="padding:20px; width:20%;">
+          </a>
+        </a></p>
+        <h2 style="font-size:17pt;text-align:center;"><b>Auto Password Changer</b></h2>
+
+              {% with messages = get_flashed_messages(with_categories=true) %}
+              {% if messages %}
+              {% for category, message in messages %}
+              <div class="alert alert-{{ category }}">
+                {{ message }}
+              </div>
+              {% endfor %}
+              {% endif %}
+              {% endwith %}
+
+            <label for="api_key">Enter API Key:</label>
+            <input type="password" id="api_key" name="api_key" style="text-align:center;" required>
+            <input type="submit" value="Submit" class="u-btn u-btn-submit u-button-style u-custom-color-1 u-btn-1" onclick="setActionAndSubmit('/', 'post')">
+            <input type="submit" value="Stop" class="u-btn u-btn-submit u-button-style u-custom-color-1 u-btn-1" onclick="setActionAndSubmit('/stop', 'get')">
+        </form>
+  </div>
+
+    <div id="loading" class="container"></div>
+    <div id="Fady" class="container" style="text-align:center; display:none;">
+      <img src="/static/images/ajax-loader.gif" style="padding:20px; width:20%;">
+      <br>Please wait while checking your networks and SSIDs</br>
+    </div>
+
+    
+</body>
+</html>
