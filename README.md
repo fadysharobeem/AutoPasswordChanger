@@ -8,9 +8,9 @@ This Python-based tool simplifies the process of changing Wi-Fi passwords, gener
    - Capture the Meraki API key for network access.
    - Users select the networks and specific SSID(s) they wish to manage.
    - Defining the frequency of automatic password changes.
+     
+     <img style="text-align: center;" src="static/images/AppUI.png" width="400"></img>
   
-     ![](static/AppUI.png)
-
 2. **Data Storage**:
    - User-provided information, including the API key, network selections, SSID choices, and password change frequency, is stored in a `data.json` file.
    - This configuration file serves as the tool's setup and is easily modifiable by the user either via the UI or by amending the file itself (it's recommended to use the UI).
@@ -45,6 +45,7 @@ To get started with the Wi-Fi Password Change and QR Code Generator Tool, follow
    python3 app.py
    ```
 6. Use the UI to configure your preferences and start password management and QR code generation.
+7. Obtain Meraki API key [here](https://developer.cisco.com/meraki/api/#!authorization/obtaining-your-meraki-api-key).
 
 ## Use
 
